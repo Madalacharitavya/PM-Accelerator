@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather History</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #dbefff, #ffffff);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0077cc;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            background-color: #f8fbff;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: center;
+            font-size: 1rem;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #0077cc;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f8ff;
+        }
+
+        tr:hover {
+            background-color: #e6f0ff;
+        }
+
+        button {
+            padding: 8px 14px;
+            background-color: #ff5c5c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d60000;
+        }
+
+        .edit-button {
+            padding: 8px 14px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .edit-button:hover {
+            background-color: #388E3C;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        a {
+            font-size: 1rem;
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            table, th, td {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>📅 Weather History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Date</th>
+                    <th>Temperature (°C)</th>
+                    <th>Description</th>
+                    <th>Humidity (%)</th>
+                    <th>Wind Speed (m/s)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{{ row[6] }}</td>
+                    <td>
+                        <div style="display: flex; justify-content: center; gap: 10px;">
+                            <a href="/edit/{{ row[0] }}" class="edit-button">Edit</a>
+                            <form method="POST" action="/delete/{{ row[0] }}">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="action-buttons">
+            <a href="/">← Back to Home</a>
+            <a href="/history">🔁 Refresh</a>
+        </div>
+    </div>
+
+</body>
+</html>

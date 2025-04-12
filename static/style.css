@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #e0f7fa, #ffe8f0); /* Soft sky-pink gradient */
+  background-image: url('https://www.transparenttextures.com/patterns/clouds.png'); /* Cloud texture */
+  background-repeat: repeat;
+  background-size: contain;
+  min-height: 100vh;
+}
+
+/* Container for the table */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 95%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* Title styling */
+h1 {
+  font-size: 2.5rem;
+  color: #0077cc;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+th {
+  background-color: #0077cc;
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f8ff;
+}
+
+tr:hover {
+  background-color: #e0f0f5;
+}
+
+/* Buttons */
+button, .btn {
+  padding: 8px 16px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button.edit, .btn.edit {
+  background-color: #28a745;
+  color: white;
+}
+
+button.edit:hover, .btn.edit:hover {
+  background-color: #218838;
+}
+
+button.delete, .btn.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.delete:hover, .btn.delete:hover {
+  background-color: #c82333;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  th, td {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}

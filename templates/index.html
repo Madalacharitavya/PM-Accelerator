@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #d6f0ff;
+      background-image: url('https://thumbs.dreamstime.com/b/cloudy-weather-summer-clear-blue-sky-lush-cumulus-clouds-cloudscape-background-wallpaper-backdrop-nature-natural-178991199.jpg'); /* Updated background image */
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0077cc;
+      margin-bottom: 30px;
+    }
+
+    form input[type="text"] {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0077cc;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #005fa3;
+    }
+
+    .error {
+      color: #d60000;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .history-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    .history-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🌤️ Weather Forecast</h1>
+    <form method="POST" action="/weather">
+      <input type="text" name="city" placeholder="Enter city name" required>
+      <button type="submit">Get Weather</button>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <a href="/history" class="history-link">📜 View Weather History</a>
+  </div>
+
+</body>
+</html>
